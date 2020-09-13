@@ -1,9 +1,15 @@
-const IndexPage = () => {
+import { withTranslation } from '../i18n';
+
+type Props = {
+  t: Function;
+};
+
+const IndexPage = ({ t }: Props) => {
   return (
     <div>
-      <h1>hello World!</h1>
+      <h1>{t('homeTitle')}</h1>
     </div>
   );
 };
 
-export default IndexPage;
+export default withTranslation('Home')(IndexPage);
