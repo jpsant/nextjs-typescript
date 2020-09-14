@@ -11,14 +11,13 @@ module.exports = withPlugins(
       withSass({
         webpack: function (config) {
           config.module.rules.push({
-            test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
-            use: {
-              loader: 'url-loader',
-              options: {
-                name: '[name].[ext]',
-              },
-            },
+            test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif|graphql|gql)$/,
+            exclude: /node_modules/,
+            loader: 'graphql-tag/loader',
           });
+          return config;
+        },
+        webpackDevMiddleware: (config) => {
           return config;
         },
       }),
